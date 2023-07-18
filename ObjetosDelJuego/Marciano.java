@@ -57,15 +57,19 @@ public class Marciano extends ObjetoJuego{
         vel.x*=-1;
         mover();
     }
+
     @Override
     public ArrayList<ObjetoJuego> colsision(ObjetoJuego o, ArrayList<ObjetoJuego> a) {
-        if((((Disparo) o).loc.x)>=loc.x && ((Disparo) o).loc.x<=loc.x+tam){
-            System.out.println("colision");
-            a.remove(o);
-            vida--;
+        if(o.getClass().equals(Disparo.class)&&o!=null){
+            if(o.loc.x>=loc.x&&o.loc.x<=loc.x+tam&&
+                o.loc.y>=loc.y&&o.loc.y<=loc.y+tam){
+                a.remove(o);
+                vida--;
+            }
         }
         return a;
     }
+
     @Override
     public boolean eliminar() {
         return vida<=0;

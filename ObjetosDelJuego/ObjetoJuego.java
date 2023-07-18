@@ -18,6 +18,8 @@ public abstract class ObjetoJuego {
     public abstract void draw(Graphics g);
     public abstract void update();
 
-    public ArrayList<ObjetoJuego> colsision(ObjetoJuego o, ArrayList<ObjetoJuego> a){return a;}
+    public ArrayList<ObjetoJuego> colsision(ObjetoJuego o, ArrayList<ObjetoJuego> a){
+        return a;
+    }
     public abstract boolean eliminar();
 }

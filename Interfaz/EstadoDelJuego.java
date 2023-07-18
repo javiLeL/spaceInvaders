@@ -15,7 +15,7 @@ public class EstadoDelJuego {
         for(int i=0;i<5;i++){
             objetoJuego.add(new Marciano(i*20+i*20, 5, 20, 1));
         }
-        objetoJuego.add(new Disparo(Ventana.WIDTH/2, Ventana.HEIGHT, 10));
+        objetoJuego.add(new Disparo(0, 0, 0));
         
     }
     void draw(Graphics g){
@@ -39,10 +39,16 @@ public class EstadoDelJuego {
                 }
             }else{
                 objetoJuego.get(i).update();
-                for(int e=0;e<objetoJuego.size();e++){
-                    objetoJuego = objetoJuego.get(i).colsision(objetoJuego.get(i), objetoJuego);
-                }
             }
+            for(int e=0;e<objetoJuego.size();e++){
+                objetoJuego = objetoJuego.get(i).colsision(objetoJuego.get(e), objetoJuego);
+            }
+
+            if(objetoJuego.get(i).eliminar()){
+                objetoJuego.remove(i);
+            }
+            
+
         }
         for(int i=0;i<objetoJuego.size();i++){
             if(choque&&objetoJuego.get(i).getClass().equals(Marciano.class)){

@@ -28,6 +28,4 @@ public class Disparo extends ObjetoJuego{
     public boolean eliminar() {
         return loc.y<=-tam;
     }
-    
-    
 }
