@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import Mapache.PVector;
 
 public abstract class ObjetoJuego {
-    PVector loc, vel;
+    public PVector loc;
+    PVector vel;
     Color col;
-    int tam;
+    public int tam;
     public ObjetoJuego(float x, float y, int tam){
         this.loc = new PVector(x, y);
         this.tam = tam;

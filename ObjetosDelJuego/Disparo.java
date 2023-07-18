@@ -9,7 +9,7 @@ public class Disparo extends ObjetoJuego{
 
     public Disparo(float x, float y, int tam) {
         super(x, y, tam);
-        vel = new PVector(0, -10);
+        vel = new PVector(0, -20);
         col = new Color(0, 255, 255);
     }
 

@@ -38,8 +38,8 @@ public class Jugador extends ObjetoJuego{
 
         if(loc.x<0){
             loc.x=(float) Ventana.WIDTH;
-        }else if(loc.x>Ventana.WIDTH+tam){
-            loc.x=(float) 0;
+        }else if(loc.x>Ventana.WIDTH+tam/2){
+            loc.x=(float) tam/2;
         }
     }
 
@@ -51,10 +51,7 @@ public class Jugador extends ObjetoJuego{
     public ArrayList <ObjetoJuego> disparar(ArrayList <ObjetoJuego> a){
         ArrayList <ObjetoJuego> b = a;
         if(disparar){
-            // if(Ventana.frameCount%5==0){
-                b.add(new Disparo(loc.x+tam/2, loc.y, 10));
-            // }
-            
+            b.add(new Disparo(loc.x+tam/2, loc.y, 10));            
             disparar=false;
         }
         return b;

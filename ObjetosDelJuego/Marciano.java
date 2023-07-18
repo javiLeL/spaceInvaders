@@ -13,7 +13,12 @@ public class Marciano extends ObjetoJuego{
     public Marciano(float x, float y, int tam, int vida) {
         super(x, y, tam);
         vel = new PVector(tam, 0);
-        this.vida = 1;
+        
+        if(vida<=0){
+            this.vida=1;
+        }else{
+            this.vida = vida;
+        }
     }
     public Marciano(float x, float y, int tam) {
         this(x, y, tam, 1);
@@ -34,7 +39,9 @@ public class Marciano extends ObjetoJuego{
             default:
                 col = new Color(255, 255, 255);
         }
-        
+        if(vida<=0){
+            col = new Color(0, 0 ,0);
+        }
         g.setColor(col);
         g.fillRect((int)loc.x.floatValue(), (int)loc.y.floatValue(), tam, tam);
     }
