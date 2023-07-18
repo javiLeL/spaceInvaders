@@ -12,7 +12,7 @@ public class Ventana extends JFrame implements Runnable{
     private Canvas canvas;
     private Thread tread;
     public boolean funcionar;
-    static int frameCount;
+    static public int frameCount;
 
     BufferStrategy bs;
     Graphics g;
@@ -23,6 +23,7 @@ public class Ventana extends JFrame implements Runnable{
     private int averageFPS;
 
     EstadoDelJuego estadoDelJuego;
+    KeyBoard keyBoard;
 
     public Ventana(){
         setTitle("Space Invaders");
@@ -45,6 +46,9 @@ public class Ventana extends JFrame implements Runnable{
         targetTime = 1000000000/FPS;
         delta = 0;
         averageFPS = FPS;
+
+        keyBoard = new KeyBoard();
+        canvas.addKeyListener(keyBoard);
     }
 
     @Override

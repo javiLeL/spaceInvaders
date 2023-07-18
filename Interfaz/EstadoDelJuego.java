@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-import ObjetosDelJuego.Disparo;
+import ObjetosDelJuego.Jugador;
 import ObjetosDelJuego.Marciano;
 import ObjetosDelJuego.ObjetoJuego;
 
@@ -12,10 +12,12 @@ public class EstadoDelJuego {
     ArrayList <ObjetoJuego> objetoJuego;
     EstadoDelJuego(){
         objetoJuego = new ArrayList<>();
-        for(int i=0;i<5;i++){
-            objetoJuego.add(new Marciano(i*20+i*20, 5, 20, 1));
+        for(int x=0;x<10;x++){
+            for(int y=0;y<5;y++){
+                objetoJuego.add(new Marciano(x*20+x*20, 5+y*20+y*20, 20, 1));
+            }
         }
-        objetoJuego.add(new Disparo(0, 0, 0));
+        objetoJuego.add(new Jugador(Ventana.WIDTH/2, Ventana.HEIGHT-50, 20));
         
     }
     void draw(Graphics g){
@@ -28,7 +30,6 @@ public class EstadoDelJuego {
 
     void update(){
         boolean choque=false;
-
         for(int i=0;i<objetoJuego.size();i++){
             if(objetoJuego.get(i).getClass().equals(Marciano.class)){
                 if(Ventana.frameCount%10==0){
@@ -46,9 +47,11 @@ public class EstadoDelJuego {
 
             if(objetoJuego.get(i).eliminar()){
                 objetoJuego.remove(i);
+            }else{
+                if(objetoJuego.get(i).getClass().equals(Jugador.class)){
+                objetoJuego = ((Jugador) objetoJuego.get(i)).disparar(objetoJuego);
             }
-            
-
+            }
         }
         for(int i=0;i<objetoJuego.size();i++){
             if(choque&&objetoJuego.get(i).getClass().equals(Marciano.class)){
